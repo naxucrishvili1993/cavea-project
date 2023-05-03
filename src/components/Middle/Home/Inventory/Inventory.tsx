@@ -1,5 +1,3 @@
-import React from "react";
-
 const Inventory = (props: {
 	name: string;
 	price: number;
