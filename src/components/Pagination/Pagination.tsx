@@ -23,10 +23,10 @@ const Pagination = () => {
 
 	return (
 		<>
-			<div className="d-flex flex-column flex-md-row flex-xs-column align-items-center justify-content-center my-3">
+			<div className="d-flex flex-column align-items-center justify-content-center my-3">
 				<div>
 					<button
-						className="btn btn-secondary"
+						className="btn btn-secondary me-1"
 						onClick={() => {
 							activePageIndex > 1 && dispatch(decrement());
 						}}
@@ -37,7 +37,7 @@ const Pagination = () => {
 						// ვარენდერებთ ღილაკებს მონაცემების რაოდენობაზე დაყრდნობით.
 						(el, index) => (
 							<button
-								className="btn btn-secondary"
+								className="btn btn-secondary me-1"
 								key={index}
 								onClick={() => {
 									dispatch(setActivePageIndex(Number(index + 1)));
@@ -48,14 +48,19 @@ const Pagination = () => {
 						),
 					)}
 					<button
-						className="btn btn-secondary"
-						onClick={() => dispatch(increment())}
+						className="btn btn-secondary me-1"
+						onClick={() =>
+							activePageIndex !== paginationButtonsLength &&
+							dispatch(increment())
+						}
 					>
 						Next
 					</button>
 				</div>
 				<div>
-					<p>Total number of items: {itemsLengthRef.current}</p>
+					<p>
+						Total number of items in the inventory : {itemsLengthRef.current}
+					</p>
 				</div>
 			</div>
 		</>

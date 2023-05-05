@@ -1,10 +1,12 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import AxiosFunctions from "../../../AxiosFunctions/AxiosFunctions";
 import Inventory from "./Inventory/Inventory";
 import { useDispatch, useSelector } from "react-redux";
 import { setInventory } from "../../Store/Features/inventorySlice";
 import { RootState } from "../../Store/store";
 import Pagination from "../../Pagination/Pagination";
+import Sort from "./Sort/Sort";
+import Filter from "./Filter/Filter";
 const axiosFunctions = new AxiosFunctions();
 
 type TInventory = {
@@ -16,27 +18,37 @@ type TInventory = {
 
 const Home = () => {
 	const dispatch = useDispatch();
-	const firstRender = useRef<boolean>(true);
 	const inventory = useSelector(
 		(state: RootState) => state.inventoryReducer.inventories[0],
 	);
 	const activePageIndex = useSelector(
 		(state: RootState) => state.pageReducer.activePageIndex,
 	);
+	const sortName = useSelector(
+		(state: RootState) => state.paramsReducer.sortName,
+	);
+	const sortPrice = useSelector(
+		(state: RootState) => state.paramsReducer.sortPrice,
+	);
+	const location = useSelector(
+		(state: RootState) => state.paramsReducer.location,
+	);
 
+	// Sending request to the server when user requests for different kind of sorting/filtering
 	useEffect(() => {
-		if (firstRender.current) {
-			firstRender.current = false;
-			axiosFunctions
-				.getInventory()
-				.then((response) => {
-					dispatch(setInventory(response.data));
-				})
-				.catch((err) => console.log(err));
-		}
-	}, []);
+		axiosFunctions
+			.getInventory(sortName, sortPrice, location)
+			.then((response) => {
+				dispatch(setInventory(response.data));
+			})
+			.catch((err) => console.log(err));
+	}, [sortName, sortPrice, location]);
 	return (
 		<>
+			<div className="container d-flex justify-content-between align-items-center my-4">
+				<Filter />
+				<Sort />
+			</div>
 			<div className="container mt-3">
 				<div className="row align-items-center">
 					<div className="col">Name</div>
