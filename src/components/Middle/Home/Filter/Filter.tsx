@@ -1,16 +1,13 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
 import { setLocation } from "../../../Store/Features/paramsSlice";
 
 const Filter = () => {
-	const [currentLocation, setCurrentLocation] = useState<string>("All");
 	const dispatch = useDispatch();
 
 	function handleLocationChange(
 		event: React.ChangeEvent<HTMLSelectElement>,
 	): void {
-		setCurrentLocation(event.currentTarget.value);
 		dispatch(setLocation(String(event.currentTarget.value)));
 	}
 
