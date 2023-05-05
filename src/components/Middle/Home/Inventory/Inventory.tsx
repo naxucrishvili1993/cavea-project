@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const Inventory = (props: {
 	item_name: string;
 	item_price: number;
@@ -10,7 +12,7 @@ const Inventory = (props: {
 			<div className="col">{props.item_price}</div>
 			<div className="col">{props.item_location}</div>
 			<div className="col text-end">
-				<a href={`./inventories/${props.item_id}`}>
+				<a href={`http://localhost:5000/inventories/${props.item_id}`}>
 					<button className="btn btn-danger">Delete</button>
 				</a>
 			</div>

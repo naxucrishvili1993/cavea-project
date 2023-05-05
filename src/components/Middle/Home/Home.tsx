@@ -43,9 +43,11 @@ const Home = () => {
 					<div className="col">Price</div>
 					<div className="col">Location</div>
 					<div className="col text-end">
-						<button type="button" className="btn btn-primary">
-							Add Item
-						</button>
+						<a href="/add">
+							<button type="button" className="btn btn-primary">
+								Add Item
+							</button>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -62,8 +64,8 @@ const Home = () => {
 				) : (
 					<p>Loading...</p>
 				)}
+				{Array.isArray(inventory) && <Pagination />}
 			</div>
-			<Pagination />
 		</>
 	);
 };
