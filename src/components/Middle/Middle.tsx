@@ -4,7 +4,7 @@ import Home from "./Home/Home";
 import AddProduct from "./AddProduct/AddProduct";
 
 const Middle = () => {
-	window.location.href === "https://cavea-project.vercel.app" &&
+	window.location.href === "https://cavea-project.vercel.app/" &&
 		window.location.replace("https://cavea-project.vercel.app/inventories");
 
 	return (

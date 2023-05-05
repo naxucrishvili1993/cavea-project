@@ -10,7 +10,9 @@ const Inventory = (props: {
 			<div className="col">{props.item_price}₾</div>
 			<div className="col">{props.item_location}</div>
 			<div className="col text-end">
-				<a href={`http://localhost:5000/inventories/${props.item_id}`}>
+				<a
+					href={`https://cavea-server.onrender.com/inventories/${props.item_id}`}
+				>
 					<button className="btn btn-danger">Delete</button>
 				</a>
 			</div>

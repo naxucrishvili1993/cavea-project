@@ -2,7 +2,11 @@ import React from "react";
 
 const AddProduct = () => {
 	return (
-		<form className="px-3 needs-validation" action="/add" method="post">
+		<form
+			className="px-3 needs-validation"
+			action="https://cavea-server.onrender.com/add"
+			method="post"
+		>
 			<select
 				className="form-select mb-3"
 				aria-label="Default select example"
