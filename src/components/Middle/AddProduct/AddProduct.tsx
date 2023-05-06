@@ -29,7 +29,7 @@ const AddProduct = () => {
 					type="text"
 					className="form-control"
 					id="formGroupExampleInput"
-					placeholder="f.e. Chair"
+					placeholder="Enter name here..."
 					name="item_name"
 					required
 				/>
@@ -42,7 +42,7 @@ const AddProduct = () => {
 					type="number"
 					className="form-control"
 					id="formGroupExampleInput2"
-					placeholder="Another input placeholder"
+					placeholder="Enter price here..."
 					name="item_price"
 					required
 				/>
